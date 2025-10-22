@@ -1,0 +1,145 @@
+<!doctype html> <!-- Indica que es un documento HTML -->
+<html>
+  <head>
+    <meta charset="utf-8" /> <!-- Permite usar acentos y caracteres españoles -->
+    <title>Apuntes p5.js</title> <!-- Nombre que aparecerá en la pestaña del navegador -->
+
+    <!-- Enlace a la librería p5.js alojada en internet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Dibujo libre</h1>
+    
+    
+    <script>
+  function setup() {
+  createCanvas(700, 700);    // Crea un lienzo de 1000x1000 píxeles
+  background(200);           // Fondo gris
+
+  // Rectángulo ladrillo
+  fill(165, 42, 42);
+  rect(100,120,200,250);
+    
+    stroke(0,0,0);
+    strokeWeight(2)
+
+  // Rectángulo más pequeño marrón
+  fill(205, 133, 63);           // Marron
+  rect(150,300,90,70);
+    stroke(139, 69, 19)
+    strokeWeight(4)
+    line(170,350,177,350)
+    
+    stroke(0,0,0);
+    strokeWeight(2)
+  
+
+  // Rectángulo azul semitransparente
+  fill(135, 206, 250,100);      // Azul con transparencia
+  rect(110, 160, 80, 70);
+
+  // Rectángulo azul con semitransparente
+  fill(135, 206, 250,100);
+  rect(200, 160, 80, 70);
+    
+     stroke(0,0,0);
+    strokeWeight(2)
+
+  // Triángulo amarillo
+  fill(240, 230, 140);
+  triangle(100,120,300,120,200,50);
+    
+  //Rectángulo verde (prao)
+    fill(50, 205, 50);
+    rect(0,371,600,230);
+    
+    stroke(0)
+    strokeWeight(0)
+    
+  //Círculo amarillo (sol)
+    fill(255, 215, 0);
+    circle(0,40,160,100);
+    
+    stroke(0)
+    strokeWeight(0)
+    
+  // Arcos de diferentes colores (arcoiris)
+    noFill()
+    stroke(255, 0, 0);
+    strokeWeight(7)
+    arc(450,100,150,150,PI,0)
+    
+    noFill()
+    stroke(255, 165, 0);
+    strokeWeight(7)
+    arc(450,100,140,140,PI,0)
+    
+    noFill()
+    stroke(255, 255, 0);
+    strokeWeight(7)
+    arc(450,100,130,130,PI,0)
+    
+     noFill()
+    stroke(0, 128, 0);
+    strokeWeight(7)
+    arc(450,100,120,120,PI,0)
+    
+      noFill()
+    stroke(30, 144, 255);
+    strokeWeight(7)
+    arc(450,100,110,110,PI,0)
+    
+      noFill()
+    stroke(25, 25, 112);
+    strokeWeight(7)
+    arc(450,100,100,100,PI,0)
+    
+   noFill()
+    stroke(147, 112, 219);
+    strokeWeight(7)
+    arc(450,100,90,90,PI,0)  
+    
+  
+   
+  // Coche
+  fill(0, 139, 139)
+    stroke(0, 139, 139)
+    strokeWeight(2)
+    rect(400,270,200,100)
+ 
+    fill(0, 139, 139)
+    stroke(0, 139, 139)
+    strokeWeight(2)
+    rect(450,220,150,50)
+    
+  fill(0, 255, 255,150)
+    rect(460,225,60,50)
+    
+  fill(0, 255, 255,150)
+    rect(530,225,60,50)
+  
+  fill(0,0,0)
+    stroke(0,0,0)
+    strokeWeight(0,0,0)
+    circle(450,370,60,50)
+    
+   fill(0,0,0)
+    stroke(0,0,0)
+    strokeWeight(0,0,0)
+    circle(550,370,60,50)
+ 
+    
+ 
+    
+    
+    
+    
+}
+    </script>
+  
+  
+    
+   
+  </body>
+</html>

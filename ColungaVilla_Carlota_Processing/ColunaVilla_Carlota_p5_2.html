@@ -1,0 +1,62 @@
+<!doctype html> <!-- Indica que es un documento HTML -->
+<html>
+  <head>
+    <meta charset="utf-8" /> <!-- Permite usar acentos y caracteres españoles -->
+    <title>Apuntes p5.js</title> <!-- Nombre que aparecerá en la pestaña del navegador -->
+
+    <!-- Enlace a la librería p5.js alojada en internet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Escribe aquí lo que quieras</h1>
+    
+    
+    <script>
+  function setup() {
+  createCanvas(400, 400);    // Crea un lienzo de 400x400 píxeles
+  background(200);           // Fondo gris
+
+  // Rectángulo rosa
+  fill(238,130,238);
+  rect(100,120,200,250);
+    
+    stroke(139, 69, 19);
+    strokeWeight(4)
+
+  // Rectángulo más pequeño marrón
+  fill(205, 133, 63);           // Marron
+  rect(150,300,90,70);
+    stroke(139, 69, 19)
+    strokeWeight(4)
+    line(170,350,177,350)
+    
+    stroke(205, 133, 63);
+    strokeWeight(4)
+  
+
+  // Rectángulo azul semitransparente
+  fill(135, 206, 250,100);      // Azul con transparencia
+  rect(110, 160, 80, 70);
+
+  // Rectángulo azul con transparencia
+  fill(135, 206, 250,100);
+  rect(200, 160, 80, 70);
+    
+     stroke(255, 165, 0);
+    strokeWeight(4)
+
+  // Triángulo amarillo
+  fill(255, 255, 0);
+  triangle(100,120,300,120,200,50);
+    
+    
+    
+}
+    </script>
+  
+  
+    
+   
+  </body>
+</html>
