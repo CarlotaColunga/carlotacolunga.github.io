@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang=es>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sistema Solar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+  <script>
+  // Sol 
+  let x_s, y_s, d_s, r_s, v_s;
+  
+  // Mercurio
+  let x_mer, y_mer, d_mer, r_mer, v_mer, D_orbmer, R_orbmer, alfamer;
+  
+  // Venus
+  let x_v, y_v, d_v, r_v, v_v, D_orbv, R_orbv, alfav;
+  
+  // Tierra
+  let x_t, y_t, d_t, r_t, v_t, D_orbt, R_orbt, alfat;
+  
+  // Marte
+  let x_M, y_M, d_M, r_M, v_M, D_orbM, R_orbM, alfaM;
+  
+  // Júpiter
+  let x_j, y_j, d_j, r_j, v_j, D_orbj, R_orbj, alfaj;
+  
+  // Saturno
+  let x_sat, y_sat, d_sat, r_sat, v_sat, D_orbsat, R_orbsat, alfasat;
+  
+  // Urano
+  let x_u, y_u, d_u, r_u, v_u, D_orbu, R_orbu, alfau;
+  
+  // Neptuno
+  let x_n, y_n, d_n, r_n, v_n, D_orbn, R_orbn, alfan;
+  
+  function setup() {
+  createCanvas(1700,1700);
+  
+  // Tamaños del Sol
+  x_s = width/2;
+  y_s = height/2;
+  d_s = width/8;
+  
+  // Tamaño de Mercurio
+  x_mer = x_s * 0.83;
+  y_mer = y_s * 1.00;
+  d_mer = d_s/11;
+  D_orbmer = d_s * 1.35;
+  R_orbmer = D_orbmer/2;
+  alfamer = PI;
+  
+  // Tamaño de Venus 
+  x_v = x_s * 0.74;
+  y_v = y_s * 1.00;
+  d_v = d_s/6;
+  D_orbv = d_s * 2.1;
+  R_orbv = D_orbv/2;
+  alfav = PI;
+  
+  // Tamaño de la Tierra
+  x_t = x_s * 0.64;
+  y_t = y_s * 1.00;
+  d_t = d_s/5;
+  D_orbt = d_s * 2.9;
+  R_orbt = D_orbt/2;
+  alfat = PI;
+  
+  // Tamaño de Marte
+  x_M = x_s * 0.55;
+  y_M = y_s * 1.00;
+  d_M = d_s/7;
+  D_orbM = d_s * 3.6;
+  R_orbM = D_orbM/2;
+  alfaM = PI;
+  
+  
+  // Tamaño de Júpiter
+  x_j = x_s * 0.45;
+  y_j = y_s * 1.00;
+  d_j = d_s/3;
+  D_orbj = d_s * 4.4;
+  R_orbj = D_orbj/2;
+  alfaj = PI;
+  
+  // Tamaño de Saturno
+  x_sat = x_s * 0.32;
+  y_sat = y_s * 1.00;
+  d_sat = d_s/3,5;
+  D_orbsat = d_s * 5.45;
+  R_orbsat = D_orbsat/2;
+  alfasat = PI;
+  
+  // Tamaño de Urano
+  x_u = x_s * 0.21;
+  y_u = y_s * 1.00;
+  d_u = d_sat/2;
+  D_orbu = d_s * 6.33;
+  R_orbu = D_orbu/2;
+  alfau = PI;
+  
+  // Tamaño de Neptuno
+  x_n = x_s * 0.13;
+  y_n = y_s * 1.00;
+  d_n = d_s/7;
+  D_orbn = d_s * 6.95;
+  R_orbn = D_orbn/2;
+  alfan = PI;
+  
+  
+  // Posiciones iniciales
+    // Mercurio
+    x_mer = x_s + R_orbmer;
+    y_mer = y_s;
+    
+    // Venus
+    x_v = x_s + R_orbv;
+    y_v = y_s;
+  
+    // Tierra
+    x_t = x_s + R_orbt;
+    y_t = y_s;
+  
+    // Marte
+    x_M = x_s + R_orbM;
+    y_M = y_s;
+  
+    // Júpiter
+    x_j = x_s + R_orbj;
+    y_j = y_s;
+  
+    // Saturno
+    x_sat = x_s + R_orbsat;
+    y_sat = y_s;
+  
+    // Urano
+    x_u = x_s + R_orbu;
+    y_u = y_s;
+    
+    // Neptuno 
+    x_n = x_s + R_orbn;
+    y_n = y_s;
+    
+  
+  }
+  
+  
+function draw() {
+    // Fondo base
+    background(18, 18, 69);
+    noStroke();  
+    
+    // Sol
+    fill(255, 210, 0);
+    circle(x_s, y_s, d_s);
+    
+    // Mercurio y su órbita
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbmer);
+    fill(113, 113, 138);
+    circle(x_mer, y_mer, d_mer);
+  
+    // Venus
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbv);
+    fill(204, 120, 82);
+    circle(x_v, y_v, d_v);
+    
+  
+    // Tierra
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbt);
+    fill(48, 88, 133);
+    circle(x_t, y_t, d_t);
+    
+    
+    // Marte
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbM);
+    fill(191, 38, 13);
+    circle(x_M, y_M, d_M);
+    
+    
+    // Júpiter
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbj);
+    fill(232, 137, 39);
+    circle(x_j, y_j, d_j);
+  
+    
+    // Saturno
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbsat);
+    fill(156, 123, 89);
+    circle(x_sat, y_sat, d_sat);
+    
+    
+    // Urano
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbu);
+    fill(73, 191, 245);
+    circle(x_u, y_u, d_u);  
+    
+    
+    // Neptuno
+    noFill();
+    stroke(100);
+    circle(x_s, y_s, D_orbn);
+    fill(19, 90, 125);
+    circle(x_n, y_n, d_n); 
+  
+  
+  // Movimientos planetas
+    // Mercurio
+    x_mer = x_s + R_orbmer * cos(alfamer);
+    y_mer = y_s + R_orbmer * sin(alfamer);
+    
+    // Venus
+    x_v = x_s + R_orbv * cos(alfav);
+    y_v = y_s + R_orbv * sin(alfav);
+    
+    // Tierra
+    x_t = x_s + R_orbt * cos(alfat);
+    y_t = y_s + R_orbt * sin(alfat);
+    
+    // Marte
+    x_M = x_s + R_orbM * cos(alfaM);
+    y_M = y_s + R_orbM * sin(alfaM);
+    
+    // Júpiter
+    x_j = x_s + R_orbj * cos(alfaj);
+    y_j = y_s + R_orbj * sin(alfaj);
+    
+    // Saturno
+    x_sat = x_s + R_orbsat * cos(alfasat);
+    y_sat = y_s + R_orbsat * sin(alfasat);
+    
+    // Urano
+    x_u = x_s + R_orbu * cos(alfau);
+    y_u = y_s + R_orbu * sin(alfau);
+    
+    // Neptuno 
+    x_n = x_s + R_orbn * cos(alfan);
+    y_n = y_s + R_orbn * sin(alfan);
+    
+  
+    
+    
+  // Velocidades
+    // Mercurio
+    alfamer= alfamer + 0.08;
+    
+    // Venus
+    alfav= alfav + 0.05;
+   
+    // Tierra
+    alfat = alfat + 0.03;
+    
+    // Marte 
+    alfaM = alfaM + 0.02;
+    
+    // Júpiter
+    alfaj = alfaj + 0.009;
+    
+    // Saturno
+    alfasat = alfasat + 0.006;
+    
+    // Urano
+    alfau = alfau + 0.002;
+   
+    // Neptuno
+    alfan = alfan + 0.0009;
+    
+    
+      }  
+    
+  </script>
+  </body>
+</html>
