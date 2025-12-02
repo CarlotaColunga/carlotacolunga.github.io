@@ -20,6 +20,9 @@
   // Tierra
   let x_t, y_t, d_t, r_t, v_t, D_orbt, R_orbt, alfat;
   
+    // Luna 
+    let x_l, y_l, d_l, r_l, v_l, D_orbl, R_orbl, alfal,  D_orbluna;
+  
   // Marte
   let x_M, y_M, d_M, r_M, v_M, D_orbM, R_orbM, alfaM;
   
@@ -27,10 +30,10 @@
   let x_j, y_j, d_j, r_j, v_j, D_orbj, R_orbj, alfaj;
   
   // Saturno
-  let x_sat, y_sat, d_sat, r_sat, v_sat, D_orbsat, R_orbsat, alfasat;
+  let x_sat, y_sat, d_sat, r_sat, v_sat, D_orbsat, R_orbsat, alfasat, D_anillossat1, D_anillossat2, D_anillossat3, D_anillossat4, D_anillossat5, D_anillossat6, D_anillossat7;
   
   // Urano
-  let x_u, y_u, d_u, r_u, v_u, D_orbu, R_orbu, alfau;
+  let x_u, y_u, d_u, r_u, v_u, D_orbu, R_orbu, alfau, D_anillourano;
   
   // Neptuno
   let x_n, y_n, d_n, r_n, v_n, D_orbn, R_orbn, alfan;
@@ -66,6 +69,8 @@
   D_orbt = d_s * 2.9;
   R_orbt = D_orbt/2;
   alfat = PI;
+  D_orbluna = D_orbt/7;
+  
   
   // Tamaño de Marte
   x_M = x_s * 0.55;
@@ -91,6 +96,14 @@
   D_orbsat = d_s * 5.45;
   R_orbsat = D_orbsat/2;
   alfasat = PI;
+  D_anillossat1 = D_orbsat/15;
+  D_anillossat2 = D_orbsat/14;
+  D_anillossat3 = D_orbsat/13;
+  D_anillossat4 = D_orbsat/12;
+  D_anillossat5 = D_orbsat/11;
+  D_anillossat6 = D_orbsat/10;
+  D_anillossat7 = D_orbsat/9;
+  
   
   // Tamaño de Urano
   x_u = x_s * 0.21;
@@ -99,6 +112,7 @@
   D_orbu = d_s * 6.33;
   R_orbu = D_orbu/2;
   alfau = PI;
+  D_anillourano = D_orbu/25;
   
   // Tamaño de Neptuno
   x_n = x_s * 0.13;
@@ -121,6 +135,8 @@
     // Tierra
     x_t = x_s + R_orbt;
     y_t = y_s;
+    
+    
   
     // Marte
     x_M = x_s + R_orbM;
@@ -162,7 +178,7 @@ function draw() {
     fill(113, 113, 138);
     circle(x_mer, y_mer, d_mer);
   
-    // Venus
+    // Venus y su órbita
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbv);
@@ -170,15 +186,18 @@ function draw() {
     circle(x_v, y_v, d_v);
     
   
-    // Tierra
+    // Tierra y su órbita
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbt);
     fill(48, 88, 133);
     circle(x_t, y_t, d_t);
+    noFill();
+    stroke(100);
+    circle(x_t, y_t, D_orbluna);
     
     
-    // Marte
+    // Marte y su órbita
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbM);
@@ -186,7 +205,7 @@ function draw() {
     circle(x_M, y_M, d_M);
     
     
-    // Júpiter
+    // Júpiter y su órbita
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbj);
@@ -194,23 +213,41 @@ function draw() {
     circle(x_j, y_j, d_j);
   
     
-    // Saturno
+    // Saturno, su órbita y sus anillos
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbsat);
     fill(156, 123, 89);
     circle(x_sat, y_sat, d_sat);
+    noFill();
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat1);
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat2);
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat3);
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat4);
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat5);
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat6);
+    stroke(100);
+    circle(x_sat, y_sat, D_anillossat7);
+   
     
-    
-    // Urano
+    // Urano, su órbita y su anillo
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbu);
     fill(73, 191, 245);
-    circle(x_u, y_u, d_u);  
+    circle(x_u, y_u, d_u);
+    noFill();
+    stroke(100);
+    circle(x_u, y_u, D_anillourano);
     
     
-    // Neptuno
+    // Neptuno y su órbita
     noFill();
     stroke(100);
     circle(x_s, y_s, D_orbn);
