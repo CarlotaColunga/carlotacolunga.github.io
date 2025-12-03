@@ -2,7 +2,7 @@
 <html lang=es>
   <head>
     <meta charset="utf-8" />
-    <title>Sistema Solar</title>
+    <title>Sistema Solar con Luna en movimiento</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
   </head>
@@ -70,7 +70,15 @@
   R_orbt = D_orbt/2;
   alfat = PI;
   D_orbluna = D_orbt/7;
+  
 
+    // Luna
+    x_l = x_t * 0.9;
+    y_l = x_t * 0.9;
+    d_l = d_t * 0.4;
+    R_orbl = D_orbluna/2;
+    alfal = PI;
+    
   
   // Tamaño de Marte
   x_M = x_s * 0.55;
@@ -136,6 +144,9 @@
     x_t = x_s + R_orbt;
     y_t = y_s;
     
+      // Luna
+      x_l = x_t + R_orbl;
+      y_l = y_t;
   
     // Marte
     x_M = x_s + R_orbM;
@@ -191,6 +202,12 @@ function draw() {
   fill(48, 88, 133);
   circle(x_t, y_t, d_t);
   
+  // Luna y su órbita
+  noFill();
+  stroke(100);
+  circle(x_t, y_t, D_orbluna);  // Órbita de la Luna alrededor de la Tierra
+  fill(148, 146, 146);
+  circle(x_l, y_l, d_l);
 
   // Marte y su órbita
   noFill();
@@ -258,6 +275,9 @@ function draw() {
   x_t = x_s + R_orbt * cos(alfat);
   y_t = y_s + R_orbt * sin(alfat);
 
+  // Luna 
+  x_l = x_t + R_orbl * cos(alfal);  
+  y_l = y_t + R_orbl * sin(alfal);
 
   // Marte
   x_M = x_s + R_orbM * cos(alfaM);
@@ -289,6 +309,8 @@ function draw() {
   // Tierra
   alfat += 0.03;
 
+  // Luna
+  alfal += 0.02;  // Luna gira lentamente respecto a la Tierra
   
   // Marte
   alfaM += 0.02;
