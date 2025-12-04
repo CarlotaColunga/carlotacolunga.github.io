@@ -38,6 +38,11 @@
   // Neptuno
   let x_n, y_n, d_n, r_n, v_n, D_orbn, R_orbn, alfan;
   
+  // Estrellas
+  let x_estrella1, y_estrella1, d_estrella1, x_estrella2, y_estrella2, x_estrell3, y_estrella3, x_estrella4, y_estrella4, x_estrella5, y_estrella5, x_estrella6, y_estrella6, x_estrella7, y_estrella7, x_estrella8, y_estrella8, x_estrella9, y_estrella9;
+
+  
+  
   function setup() {
   createCanvas(1700,1700);
   
@@ -129,6 +134,36 @@
   D_orbn = d_s * 6.95;
   R_orbn = D_orbn/2;
   alfan = PI;
+  
+  // Estrellas
+  x_estrella1 = random(0, width);
+  y_estrella1 = random(0, height);
+  d_estrella1 = d_s/22;
+  
+  x_estrella2 = random(0, width);
+  y_estrella2 = random(0, height);
+  
+  x_estrella3 = random(0, width);
+  y_estrella3 = random(0, height);
+  
+  x_estrella4 = random(0, width);
+  y_estrella4 = random(0, height);
+  
+  x_estrella5 = random(0, width);
+  y_estrella5 = random(0, height);
+  
+  x_estrella6 = random(0, width);
+  y_estrella6 = random(0, height);
+  
+  x_estrella7 = random(0, width);
+  y_estrella7 = random(0, height);
+  
+  x_estrella8 = random(0, width);
+  y_estrella8 = random(0, height);
+  
+  x_estrella9 = random(0, width);
+  y_estrella9 = random(0, height);
+  
   
   
   // Posiciones iniciales
@@ -261,6 +296,35 @@ function draw() {
   circle(x_s, y_s, D_orbn);
   fill(19, 90, 125);
   circle(x_n, y_n, d_n);
+  
+  // Estrellas
+  fill(242, 207, 12);
+  circle(x_estrella1, y_estrella1, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella2, y_estrella2, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella3, y_estrella3, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella4, y_estrella4, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella5, y_estrella5, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella6, y_estrella6, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella7, y_estrella7, d_estrella1);
+
+  fill(242, 207, 12);
+  circle(x_estrella8, y_estrella8, d_estrella1);
+
+  fill(242, 207, 12);
+  circle(x_estrella9, y_estrella9, d_estrella1);
+
 
   // Movimientos planetas
   // Mercurio
