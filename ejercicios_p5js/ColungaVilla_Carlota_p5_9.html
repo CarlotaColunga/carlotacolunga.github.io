@@ -39,7 +39,7 @@
   let x_n, y_n, d_n, r_n, v_n, D_orbn, R_orbn, alfan;
   
   // Estrellas
-  let x_estrella1, y_estrella1, d_estrella1, x_estrella2, y_estrella2, x_estrell3, y_estrella3, x_estrella4, y_estrella4, x_estrella5, y_estrella5, x_estrella6, y_estrella6, x_estrella7, y_estrella7, x_estrella8, y_estrella8, x_estrella9, y_estrella9;
+  let x_estrella1, y_estrella1, d_estrella1, x_estrella2, y_estrella2, x_estrell3, y_estrella3, x_estrella4, y_estrella4, x_estrella5, y_estrella5, x_estrella6, y_estrella6, x_estrella7, y_estrella7, x_estrella8, y_estrella8, x_estrella9, y_estrella9, x_estrella10, y_estrella10, x_estrella11, y_estrella11, x_estrella12, y_estrella12, x_estrella13, y_estrella13, x_estrella14, y_estrella14, x_estrella15, y_estrella15;
 
   
   
@@ -164,6 +164,23 @@
   x_estrella9 = random(0, width);
   y_estrella9 = random(0, height);
   
+  x_estrella10 = random(0, width);
+  y_estrella10 = random(0, height);
+  
+  x_estrella11 = random(0, width);
+  y_estrella11 = random(0, height);
+  
+  x_estrella12 = random(0, width);
+  y_estrella12 = random(0, height);
+  
+  x_estrella13 = random(0, width);
+  y_estrella13 = random(0, height);
+  
+  x_estrella14 = random(0, width);
+  y_estrella14 = random(0, height);
+  
+  x_estrella15 = random(0, width);
+  y_estrella15 = random(0, height);
   
   
   // Posiciones iniciales
@@ -324,8 +341,26 @@ function draw() {
 
   fill(242, 207, 12);
   circle(x_estrella9, y_estrella9, d_estrella1);
+  
+  fill(242, 207, 12);
+  circle(x_estrella10, y_estrella10, d_estrella1);
 
+  fill(242, 207, 12);
+  circle(x_estrella11, y_estrella11, d_estrella1);
 
+  fill(242, 207, 12);
+  circle(x_estrella12, y_estrella12, d_estrella1);
+
+  fill(242, 207, 12);
+  circle(x_estrella13, y_estrella13, d_estrella1);
+
+  fill(242, 207, 12);
+  circle(x_estrella14, y_estrella14, d_estrella1);
+
+  fill(242, 207, 12);
+  circle(x_estrella15, y_estrella15, d_estrella1);
+
+  
   // Movimientos planetas
   // Mercurio
   x_mer = x_s + R_orbmer * cos(alfamer);
