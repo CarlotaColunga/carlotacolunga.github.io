@@ -1,65 +1,69 @@
 <!doctype html>
-<html lang=es>
-  <head>
-    <meta charset="utf-8" />
-    <title>If básicos: día · noche con Sol cíclico </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  </head>
-  <body>
-  <script>
-  // Sol y su cielo
-  let x_s, y_s, v_s, d_s, r_s;
-  let x_cs;           // x del rectángulo "cielo del sol"
-  let adelanto_s;     // cuánto va por delante el cielo del sol
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>If básicos: día · noche con Sol cíclico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
 
-  
-  
+<body>
+<script>
+// Sol y su cielo
+let x_s, y_s, v_s, d_s, r_s;
+let x_cs;           // x del rectángulo "cielo del sol"
+let adelanto_s;     // cuánto tarda en volver a salir
 
-  function setup() {
-    createCanvas(600, 600);
+function setup() {
+  createCanvas(600, 600);
 
-    // Tamaños relativos (diámetros)
-    d_s = width * 0.15;   r_s = d_s * 0.50;
-    
-    // Posiciones iniciales de astros
-    x_s = -r_s;            y_s = height * 0.10;
+  // Tamaños
+  d_s = width * 0.15;
+  r_s = d_s * 0.5;
 
-    // Velocidades
-    v_s = width / 800;
-    
-    // Adelantos (por delante del astro)
-    adelanto_s = width * 0.10; // 10% del ancho
-    
-    // Posiciones iniciales de los cielos (ligeramente por delante)
-    x_cs = x_s 
-    
+  // Posición inicial
+  x_s = -r_s;
+  y_s = height * 0.15;
+
+  // Velocidad
+  v_s = width / 600;
+
+  // Tiempo extra de noche
+  adelanto_s = width * 0.1; 
+
+  x_cs = x_s;
+}
+
+function draw() {
+  noStroke();
+
+  // Cielo
+  if (x_s < -r_s || x_s > width + r_s) {
+    // Noche
+    background(0);
+  } else {
+    // Día
+    background(74, 123, 161);
   }
 
-  function draw() {
-    // Fondo base
-    background(74, 123, 161);
-    noStroke();
+  // Suelo
+  fill(20, 120, 40);
+  rect(0, height * 0.8, width, height * 0.2);
 
-    // Cielo del sol (azulado) — se pinta primero
-    fill(74, 123, 161);
-    rect(x_cs, 0, width, height * 0.8);
-
-    // Suelo
-    fill(20, 120, 40);
-    rect(0, height * 0.8, width, height * 0.2);
-
-    // Sol
+  // Sol
+  if (x_s > -r_s && x_s < width + r_s) {
     fill(255, 210, 0);
     circle(x_s, y_s, d_s);
-    
-    if (x_s > width + r_s)
-      {x_s = -r_s}
-    else
-      {x_s = x_s + v_s}
-    
-  }  
-    
-  </script>
-  </body>
+  }
+
+  // Movimiento
+  x_s += v_s;
+
+  // Reinicio con retraso (noche)
+  if (x_s > width + r_s + adelanto_s) {
+    x_s = -r_s - adelanto_s;
+  }
+}
+</script>
+</body>
 </html>
