@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Día y noche con sol y luna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body>
+<script>
+// Sol
+let x_s, y_s, v_s, d_s, r_s;
+let adelanto_s;
+
+// Luna
+let x_l, y_l, v_l, d_l, r_l;
+let adelanto_l;
+
+// Control
+let esDia = true;
+
+function setup() {
+  createCanvas(600, 600);
+
+  // Tamaños
+  d_s = width * 0.20;
+  r_s = d_s * 0.5;
+
+  d_l = width * 0.15;
+  r_l = d_l * 0.5;
+
+  // Posiciones
+  y_s = height * 0.15;
+  y_l = height * 0.2;
+
+  // Velocidades
+  v_s = width / 600;
+  v_l = width / 600;
+
+  // Retrasos
+  adelanto_s = width * 0.4;
+  adelanto_l = width * 0.4;
+
+  // Inicio
+  x_s = -r_s;
+  x_l = -r_l - adelanto_l;
+}
+
+function draw() {
+  noStroke();
+
+  // Ciela
+  if (esDia) {
+    background(74, 123, 161);
+  } else {
+    background(0);
+  }
+
+  // Suelo
+  fill(20, 120, 40);
+  rect(0, height * 0.8, width, height * 0.2);
+
+  // Sol
+  if (esDia) {
+    if (x_s > -r_s && x_s < width + r_s) {
+      fill(255, 210, 0);
+      circle(x_s, y_s, d_s);
+    }
+
+    x_s += v_s;
+
+    // Cuando el sol termina, empieza la noche
+    if (x_s > width + r_s + adelanto_s) {
+      esDia = false;
+      x_l = -r_l;
+    }
+  }
+
+  // Luna
+  if (!esDia) {
+    if (x_l > -r_l && x_l < width + r_l) {
+      fill(220);
+      circle(x_l, y_l, d_l);
+    }
+
+    x_l += v_l;
+
+    // Cuando la luna termina, vuelve el día
+    if (x_l > width + r_l + adelanto_l) {
+      esDia = true;
+      x_s = -r_s;
+    }
+  }
+}
+</script>
+</body>
+</html>
