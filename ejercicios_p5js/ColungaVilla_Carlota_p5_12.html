@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Día y noche con sol y luna</title>
+  <title>Día y noche con sol, luna y calendario</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
@@ -17,12 +17,11 @@ let adelanto_s;
 let x_l, y_l, v_l, d_l, r_l;
 let adelanto_l;
 
-// Control
-let esDia = true;
-
 // Calendario
 let dia, mes, anio;
 
+// Control
+let esDia = true;
 
 function setup() {
   createCanvas(600, 600);
@@ -39,8 +38,8 @@ function setup() {
   y_l = height * 0.2;
 
   // Velocidades
-  v_s = width / 100;
-  v_l = width / 100;
+  v_s = width / 50;
+  v_l = width / 50;
 
   // Retrasos
   adelanto_s = width * 0.4;
@@ -53,14 +52,13 @@ function setup() {
   // Calendario
   dia = 1;
   mes = 1;
-  anio = 2026;
-  
+  anio = 2025;
 }
 
 function draw() {
   noStroke();
 
-  // Ciela
+  // Cielo
   if (esDia) {
     background(74, 123, 161);
   } else {
@@ -70,6 +68,16 @@ function draw() {
   // Suelo
   fill(20, 120, 40);
   rect(0, height * 0.8, width, height * 0.2);
+
+  //Texto del calendario
+  if (esDia) {
+    fill(0);
+  } else {
+    fill(255);
+  }
+
+  textSize(20);
+  text("Fecha: (" + dia + ") (" + mes + ") (" + anio + ")", 10, 30);
 
   // Sol
   if (esDia) {
@@ -96,47 +104,27 @@ function draw() {
 
     x_l += v_l;
 
-    // Cuando la luna termina, vuelve el día
+    // Fin de la noche y nuevo día
     if (x_l > width + r_l + adelanto_l) {
       esDia = true;
       x_s = -r_s;
+
+      // Incremento del calendario (sale el Sol)
+      dia = dia + 1;
+
+      // Si paso de 30 días → nuevo mes
+      if (dia > 30) {
+        dia = 1;
+        mes = mes + 1;
+      }
+
+      // Si paso de 12 meses → nuevo año
+      if (mes > 12) {
+        mes = 1;
+        anio = anio + 1;
+      }
     }
-    
-    // Calendario 
-    noStroke(); //sin trazo
-
-     // Color dependiente de la posición del sol.
-      if (x_s <= width + r_s) { fill(0);    } 
-      else { fill(255); }
-
-     // Elegimos un tamaño de letra que se vea bien
-     textSize(20); 
-
-     // Escribimos fíjate cómo se incluyen las variables dentro de un texto fijo. Esto te será útil en el examen.
-     text("Fecha: (" + dia + ") (" + mes + ") (" + anio + ")", 10, 20);
-   
-     if (x_s > 2 * width + r_s) {
-
-       // Incremento la variable día.
-      dia = dia + 1; 
-
-     // Reseteo día e incremento mes si me paso de 30 días
-      if (dia > 30) { dia = 1;    mes = mes + 1;   }
-
-      // Reseteo mes e incremento año si me paso de 12 meses
-      if (mes > 12) { mes = 1;    anio = anio + 1; }
-    }
-    
-    
   }
-  
-  
-  
-  
-  
-  
-  
-  
 }
 </script>
 </body>
