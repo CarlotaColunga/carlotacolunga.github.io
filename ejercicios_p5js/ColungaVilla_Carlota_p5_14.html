@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Funciones mínimas (2 funciones) para ordenar tu programa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body>
+<script>
+// ======================
+// T12: Sol, Luna, Fecha
+// ======================
+
+// Sol
+let x_s, y_s, v_s, d_s, r_s, adelanto_s;
+
+// Luna
+let x_l, y_l, v_l, d_l, r_l, adelanto_l;
+
+// Calendario
+let dia, mes, anio;
+
+// Control día/noche
+let esDia = true;
+
+// ======================
+// Stickman
+// ======================
+let xP, yP;
+let S;
+let vP;
+
+let groundY;
+let vY;
+let jumpV;
+let g;
+
+function setup() {
+  createCanvas(600, 600);
+
+  // ---------- Sol ----------
+  d_s = width * 0.20;
+  r_s = d_s * 0.5;
+  y_s = height * 0.15;
+  v_s = width / 50;
+  adelanto_s = width * 0.4;
+  x_s = -r_s;
+
+  // ---------- Luna ----------
+  d_l = width * 0.15;
+  r_l = d_l * 0.5;
+  y_l = height * 0.2;
+  v_l = width / 50;
+  adelanto_l = width * 0.4;
+  x_l = -r_l - adelanto_l;
+
+  // ---------- Calendario ----------
+  dia = 1;
+  mes = 1;
+  anio = 2025;
+
+  // ---------- Suelo ----------
+  groundY = 0.80 * height;
+
+  // ---------- Stickman ----------
+  S  = 0.12 * min(width, height);
+  xP = 0.25 * width;
+  yP = groundY;
+
+  vP = width / 150;
+
+  vY = 0;
+  jumpV = -0.030 * height;
+  g = 0.0016 * height;
+}
+
+function draw() {
+  // ---------- Cielo ----------
+  if (esDia) {
+    background(74, 123, 161);
+  } else {
+    background(0);
+  }
+
+  // ---------- Suelo ----------
+  noStroke();
+  fill(80, 170, 90);
+  rect(0, groundY, width, height - groundY);
+
+  // ---------- Fecha ----------
+  fill(255, 0, 0);
+  textSize(13);
+  text("Fecha: " + dia + "/" + mes + "/" + anio, 12, 22);
+
+  // ---------- Sol ----------
+  if (esDia) {
+    fill(255, 210, 0);
+    circle(x_s, y_s, d_s);
+    x_s += v_s;
+
+    if (x_s > width + r_s + adelanto_s) {
+      esDia = false;
+      x_l = -r_l;
+    }
+  }
+
+  // ---------- Luna ----------
+  if (!esDia) {
+    fill(220);
+    circle(x_l, y_l, d_l);
+    x_l += v_l;
+
+    if (x_l > width + r_l + adelanto_l) {
+      esDia = true;
+      x_s = -r_s;
+      actualizarCalendario(); // ← AQUÍ, y solo aquí
+    }
+  }
+
+  // ---------- Movimiento horizontal ----------
+  if (keyIsDown(LEFT_ARROW)) {
+    xP -= vP;
+  } else if (keyIsDown(RIGHT_ARROW)) {
+    xP += vP;
+  }
+
+  xP = constrain(xP, 0, width);
+
+  // ---------- Física del salto ----------
+  vY += g;
+  yP += vY;
+
+  if (yP > groundY) {
+    yP = groundY;
+    vY = 0;
+  }
+
+  // ---------- Dibujo del personaje ----------
+  dibujarStickman();
+}
+
+// ---------- Evento de salto ----------
+function keyPressed() {
+  if (keyCode === UP_ARROW && yP === groundY) {
+    vY = jumpV;
+  }
+}
+
+// ======================
+// FUNCIONES PEDIDAS
+// ======================
+
+function dibujarStickman() {
+  let rHead = 0.20 * S;
+  let bodyL = 0.60 * S;
+  let armL  = 0.45 * S;
+  let legL  = 0.55 * S;
+
+  let hipY = yP - legL;
+  let shoulderY = hipY - bodyL;
+  let headY = shoulderY - rHead;
+
+  stroke(255, 0, 0);
+  strokeWeight(0.06 * S);
+  noFill();
+
+  // Cabeza
+  circle(xP, headY, 2 * rHead);
+
+  // Tronco
+  line(xP, shoulderY, xP, hipY);
+
+  // Brazos
+  line(xP - 0.25*S, shoulderY, xP + 0.25*S, shoulderY);
+  line(xP - 0.25*S, shoulderY, xP - 0.25*S, shoulderY + armL);
+  line(xP + 0.25*S, shoulderY, xP + 0.25*S, shoulderY + armL);
+
+  // Piernas
+  line(xP, hipY, xP - 0.18*S, yP);
+  line(xP, hipY, xP + 0.18*S, yP);
+}
+
+function actualizarCalendario() {
+  dia++;
+  if (dia > 30) {
+    dia = 1;
+    mes++;
+  }
+  if (mes > 12) {
+    mes = 1;
+    anio++;
+  }
+}
+</script>
+</body>
+</html>
