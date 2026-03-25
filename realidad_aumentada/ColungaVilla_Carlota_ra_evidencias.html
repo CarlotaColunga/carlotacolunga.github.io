@@ -2,121 +2,66 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>RA 01 - Primera escena con marcador</title>
-
-  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidencias del bloque de Realidad Aumentada</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      padding: 16px;
       font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+      color: #222;
     }
 
     .pagina {
       max-width: 900px;
       margin: 0 auto;
-    }
-
-    .caja-ra {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      height: 420px;
-      margin: 0 auto;
-      border: 2px solid #444;
+      background: white;
+      padding: 20px;
       border-radius: 12px;
-      overflow: hidden;
-      background: #000;
     }
 
-    .caja-ra a-scene {
-      position: absolute !important;
-      top: 0;
-      left: 0;
-      width: 100% !important;
-      height: 100% !important;
+    h1, h2 {
+      margin-top: 0;
     }
 
-    .a-canvas {
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      z-index: 2 !important;
+    .bloque-tarea {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
     }
 
-    #arjs-video {
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
-      z-index: 1 !important;
+    img {
+      max-width: 300px;
+      width: 100%;
+      display: block;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
     }
 
-    .a-enter-vr,
-    .a-orientation-modal,
-    .a-fullscreen-ui {
-      display: none !important;
+    a {
+      color: #0b57d0;
     }
   </style>
 </head>
-
 <body>
   <div class="pagina">
-    <div class="caja-ra" id="contenedor-ra">
-      <a-scene
-        embedded
-        vr-mode-ui="enabled: false"
-        renderer="alpha: true; antialias: true;"
-        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+    <h1>Evidencias del bloque de Realidad Aumentada</h1>
+    <p>En esta página iré incorporando las evidencias de las tareas del bloque de realidad aumentada.</p>
 
-        <a-marker preset="hiro">
-          <a-box
-            position="0 0.5 0"
-            rotation="0 45 0"
-            scale="0.5 0.5 0.5"
-            color="red">
-          </a-box>
-        </a-marker>
+    <section class="bloque-tarea">
+      <h2>Tarea 1 — Primera escena con marcador</h2>
+      <p>Aquí debes escribir una breve descripción de lo que has hecho en esta tarea.</p>
 
-        <a-entity camera></a-entity>
-      </a-scene>
-    </div>
+      <p>
+        Enlace a la experiencia:
+        <a href="apellido_nombre_ra_01.html" target="_blank">Abrir tarea 1</a>
+      </p>
+
+      <img src="imagenes/evidencia_ra_01_1.jpg" alt="Evidencia 1 de la tarea 1">
+      <img src="imagenes/evidencia_ra_01_2.jpg" alt="Evidencia 2 de la tarea 1">
+    </section>
+
   </div>
-
-  <script>
-    window.addEventListener("load", () => {
-      const contenedor = document.getElementById("contenedor-ra");
-
-      const recolocarElementosAR = () => {
-        const video = document.getElementById("arjs-video");
-        const canvas = document.querySelector(".a-canvas");
-
-        if (video && video.parentElement !== contenedor) {
-          contenedor.appendChild(video);
-        }
-
-        if (canvas && canvas.parentElement !== contenedor) {
-          contenedor.appendChild(canvas);
-        }
-      };
-
-      setTimeout(recolocarElementosAR, 1000);
-      setTimeout(recolocarElementosAR, 2000);
-      setTimeout(recolocarElementosAR, 3000);
-    });
-  </script>
 </body>
 </html>
