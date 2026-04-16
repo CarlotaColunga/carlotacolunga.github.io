@@ -83,20 +83,7 @@
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
         <a-marker preset="hiro">
-          <a-box
-           !-- Fondo -->
-<a-sky color="#222"></a-sky>
-
-<!-- Suelo -->
-<a-plane
-  position="0 0 -4"
-  rotation="-90 0 0"
-  width="6"
-  height="6"
-  color="#555">
-</a-plane>
-
-<!-- Semáforo -->
+        <!-- Semáforo -->
 <a-entity id="semaforo" position="0 0 -4">
 
   <!-- Poste -->
@@ -139,9 +126,7 @@
 
 </a-entity>
 
-<!-- Cámara -->
-<a-camera position="0 1.6 0"></a-camera>
-          </a-box>
+        
         </a-marker>
 
         <a-entity camera></a-entity>
